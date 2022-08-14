@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "target": "ESNext",
+    "module": "ES2015",
+    "moduleResolution": "node",
+    "importsNotUsedAsValues": "preserve",
+    "strictNullChecks": true,
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "alwaysStrict": true,
+    "noEmitOnError": true,
+    "sourceMap": true
+  }
+}
