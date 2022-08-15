@@ -1,3 +1,5 @@
+type FetchResult<TResult> = { readonly data: TResult }
+
 export class GraphqlClient {
   private readonly baseUrl?: string
 
@@ -8,7 +10,7 @@ export class GraphqlClient {
   public async execute<TResult>(
     path: string,
     query: string,
-    variables: Record<string, unknown>,
+    variables?: Record<string, unknown>,
   ): Promise<TResult> {
     const url = new URL(path, this.baseUrl)
 
@@ -17,13 +19,15 @@ export class GraphqlClient {
 
     const body = JSON.stringify({ query, variables })
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return (
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const { data }: FetchResult<TResult> = await (
       await fetch(url, {
         method: 'POST',
         headers,
         body,
       })
     ).json()
+
+    return data
   }
 }

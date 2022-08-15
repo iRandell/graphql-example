@@ -1,0 +1,16 @@
+type User {
+  id: ID
+  name: String
+  phone: String
+  description: String
+}
+
+type Query {
+  read(count: Int): [User!]
+}
+
+type Mutation {
+  create(name: String!, phone: String!, description: String!): User!
+  update(id: ID!, name: String!, phone: String!, description: String!): User
+  delete(id: ID!): User
+}
